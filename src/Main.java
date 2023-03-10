@@ -16,7 +16,7 @@ public class  Main {
 
 
         toPrint(employees);
-        sumPerMonth(employees);
+        System.out.println("Средняя зарплата в компании:" + sumPerMonth(employees));
         minSalary(employees);
         maxSalary(employees);
         middleSalary(employees);
@@ -37,12 +37,10 @@ public class  Main {
     }
 
     public static float sumPerMonth(Employee[] employees){
-        System.out.println();
         float sumPerMonth = 0;
         for (Employee employee : employees) {
             sumPerMonth = sumPerMonth + employee.getSalary();
         }
-        System.out.println("Общие расходы на зарплату: " + sumPerMonth);
         return sumPerMonth;
     }
     public static void minSalary(Employee[] employees){
@@ -80,7 +78,7 @@ public class  Main {
         System.out.println("Зарплата после индексации на " + coefficient + "%:");
         for (Employee employee : employees) {
             employee.setSalary(coefficient/100*employee.getSalary()+ employee.getSalary());
-            System.out.println(employee.toString());
+            System.out.println(employee);
         }
     }
     public static void minSalaryInDepartment(Employee[] employees, int department){
