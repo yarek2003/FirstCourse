@@ -48,16 +48,16 @@ public class  Main {
     public static void minSalary(Employee[] employees){
         System.out.println();
         float minSalary = employees[0].getSalary();
-        for (int i = 0; i < employees.length; i++) {
-            if (employees[i].getSalary() < minSalary) minSalary = employees[i].getSalary();
+        for (Employee employee : employees) {
+            if (employee.getSalary() < minSalary) minSalary = employee.getSalary();
         }
         System.out.println("Самая низкая зарплата: " + minSalary);
     }
     public static void maxSalary(Employee[] employees){
         System.out.println();
         float maxSalary = employees[0].getSalary();
-        for (int i = 0; i < employees.length; i++) {
-            if (employees[i].getSalary() > maxSalary) maxSalary = employees[i].getSalary();
+        for (Employee employee : employees) {
+            if (employee.getSalary() > maxSalary) maxSalary = employee.getSalary();
         }
         System.out.println("Самая высокая зарплата в компании: " + maxSalary);
     }
@@ -85,8 +85,9 @@ public class  Main {
     }
     public static void minSalaryInDepartment(Employee[] employees, int department){
         System.out.println();
-        float minSalary = employees[0].getSalary();
-        for (int j=0; j< employees.length;j++){
+        //Берем зарплату первого сотрудника из требуемого отдела
+        float minSalary = -1;
+        for (int j=0; j < employees.length;j++){
             if (employees[j].getDepartment() == department)
                 minSalary = employees[j].getSalary();
             break;
@@ -98,24 +99,26 @@ public class  Main {
         System.out.println("Самая низкая зарплата в отделе: " + department + " - " + minSalary);
     }
     public static void maxSalaryInDepartment(Employee[] employees, int department){
-        float maxSalary = employees[0].getSalary();
+        //Берем зарплату первого сотрудника из требуемого отдела
+        float maxSalary = -1;
         for (int j=0; j< employees.length;j++){
             if (employees[j].getDepartment() == department)
                 maxSalary = employees[j].getSalary();
             break;
         }
-        for (int i = 0; i < employees.length; i++) {
-            if (employees[i].getSalary() > maxSalary && employees[i].getDepartment() == department) maxSalary = employees[i].getSalary();
+        for (Employee employee : employees) {
+            if (employee.getSalary() > maxSalary && employee.getDepartment() == department)
+                maxSalary = employee.getSalary();
         }
         System.out.println("Самая высокая зарплата в отделе: " + department + " - " + maxSalary);
     }
     public static void boostSalaryInDepartment(Employee[] employees, float coefficient, int department){
         System.out.println();
-        System.out.println("Зарплата после индексации на " + coefficient + "%:");
+        System.out.println("Зарплата после индексации на " + coefficient + "% в отделе :" + department);
         for (Employee employee : employees) {
             if (employee.getDepartment() == department) {
-                employee.setSalary(coefficient/100*employee.getSalary()+ employee.getSalary());
-                System.out.println(employee.toString());}
+                employee.setSalary(coefficient/100*employee.getSalary() + employee.getSalary());
+                System.out.println(employee);}
         }
     }
     public static void toPrintDepartment(Employee[] employees, int department){
