@@ -1,3 +1,5 @@
+package Hard;
+
 public class Employee {
     private String lastName;
     private String firstName;
@@ -68,7 +70,6 @@ public class Employee {
                 ", middleName='" + middleName + '\'' +
                 ", department=" + department +
                 ", salary=" + salary +
-                ", id=" + id +
                 '}';
     }
 
